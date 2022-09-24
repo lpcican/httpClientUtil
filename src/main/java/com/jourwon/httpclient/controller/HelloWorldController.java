@@ -1,7 +1,9 @@
 package com.jourwon.httpclient.controller;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,6 +50,11 @@ public class HelloWorldController {
 	@PostMapping("/postWithParam")
 	public String postWithParam(@RequestParam String code, @RequestParam String message) {
 		return "post带参请求成功,参数code: " + code + ",参数message: " + message;
+	}
+
+	@PostMapping("/postWithJson")
+	public String postWithJson(@RequestBody BodyTest bodyTest){
+		return "post json"+ JSON.toJSONString(bodyTest,true);
 	}
 
 }

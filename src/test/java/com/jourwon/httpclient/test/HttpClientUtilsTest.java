@@ -3,6 +3,8 @@ package com.jourwon.httpclient.test;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
+import com.jourwon.httpclient.controller.BodyTest;
 import org.junit.Test;
 
 import com.jourwon.httpclient.pojo.HttpClientResult;
@@ -71,4 +73,18 @@ public class HttpClientUtilsTest {
 		System.out.println(result);
 	}
 
+	/**
+	 * Description: 测试post带参请求
+	 *
+	 * @throws Exception
+	 */
+	@Test
+	public void testPostWithJson() throws Exception {
+		BodyTest b = new BodyTest();
+		b.setAge("18");
+		b.setName("name");
+		HttpClientResult result =
+				HttpClientUtils.doPostJson("http://127.0.0.1:8080/hello/postWithJson", null,JSON.toJSONString(b));
+		System.out.println(result);
+	}
 }
